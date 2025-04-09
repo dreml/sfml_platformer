@@ -2,6 +2,7 @@
 
 #include "GameObject.hpp"
 #include "components/AnimationComponent.hpp"
+#include "components/PlayerController.hpp"
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Texture.hpp>
@@ -19,6 +20,7 @@ public:
 
 private:
   AnimationComponent animComponent;
+  PlayerController controller;
 };
 
 } // namespace sfmlp

@@ -20,7 +20,7 @@ Game::Game(ScreenDimensions sd)
 }
 
 void Game::update(float dt) {
-
+	player->update(dt);
 }
 
 void Game::draw(sf::RenderTarget &rt) const {

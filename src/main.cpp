@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Color.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/System/Clock.hpp>
 #include <SFML/Window/Event.hpp>
 #include <SFML/Window/Keyboard.hpp>
 #include <SFML/Window/VideoMode.hpp>
@@ -14,6 +15,7 @@ int main () {
 	auto window = sf::RenderWindow(sf::VideoMode({sfmlp::Constants::WINDOW_WIDTH, sfmlp::Constants::WINDOW_HEIGHT}), "SFML Test");
 	window.setFramerateLimit(144);
 
+	sf::Clock frameClock;
 	sfmlp::Game game(screenDimensions);
 
 	while (window.isOpen()) {
@@ -26,6 +28,9 @@ int main () {
 				}
 			}
 		}
+
+		auto dt = frameClock.restart();
+		game.update(dt.asSeconds());
 
 		window.clear(sf::Color::White);
 		game.draw(window);
