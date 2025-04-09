@@ -1,7 +1,7 @@
 #pragma once
 
-#include "GameObject.hpp"
-#include "components/AnimationComponent.hpp"
+#include "components/Component.hpp"
+#include "game/GameObject.hpp"
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Texture.hpp>
@@ -10,15 +10,17 @@
 
 namespace sfmlp {
 
-class Player : public GameObject {
+class AnimationComponent : public Component {
 public:
-  Player(sf::Vector2f p, std::string texturePath);
+  AnimationComponent(GameObject &owner, std::string texturePath,
+                     sf::Vector2f spriteOrigin, sf::Vector2i spriteSize);
 
   virtual void update(float dt) override;
   virtual void draw(sf::RenderTarget &rt) const override;
 
 private:
-  AnimationComponent animComponent;
+  sf::Texture texture;
+  sf::Sprite sprite;
 };
 
 } // namespace sfmlp

@@ -13,7 +13,10 @@ using namespace sfmlp;
 Game::Game(ScreenDimensions sd)
 	: screenDimensions(sd)
 {
-	player = std::make_unique<Player>(sf::Vector2f{(float)sd.width/2, (float)sd.height/2});
+	player = std::make_unique<Player>(
+		sf::Vector2f{(float)sd.width/2, (float)sd.height/2},
+		"assets/player.png"
+	);
 }
 
 void Game::update(float dt) {

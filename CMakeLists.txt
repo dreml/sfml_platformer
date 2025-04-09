@@ -27,6 +27,8 @@ set(SOURCES
     src/main.cpp
 		src/game/Game.cpp
 		src/game/Player.cpp
+		src/components/AnimationComponent.cpp
+		src/components/Component.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})
