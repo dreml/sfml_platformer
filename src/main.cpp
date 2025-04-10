@@ -5,37 +5,39 @@
 #include <SFML/Window/Event.hpp>
 #include <SFML/Window/Keyboard.hpp>
 #include <SFML/Window/VideoMode.hpp>
+
 #include "common/Constants.hpp"
 #include "common/Types.hpp"
 #include "game/Game.hpp"
 
-int main () {
-	auto screenDimensions = sfmlp::ScreenDimensions{sfmlp::Constants::WINDOW_WIDTH, sfmlp::Constants::WINDOW_HEIGHT};
+int main()
+{
+  auto screenDimensions = sfmlp::ScreenDimensions{sfmlp::Constants::WINDOW_WIDTH, sfmlp::Constants::WINDOW_HEIGHT};
 
-	auto window = sf::RenderWindow(sf::VideoMode({sfmlp::Constants::WINDOW_WIDTH, sfmlp::Constants::WINDOW_HEIGHT}), "SFML Test");
-	window.setFramerateLimit(144);
+  auto window = sf::RenderWindow(sf::VideoMode({sfmlp::Constants::WINDOW_WIDTH, sfmlp::Constants::WINDOW_HEIGHT}), "SFML Test");
+  window.setFramerateLimit(144);
 
-	sf::Clock frameClock;
-	sfmlp::Game game(screenDimensions);
+  sf::Clock frameClock;
+  sfmlp::Game game(screenDimensions);
 
-	while (window.isOpen()) {
-		while (auto event = window.pollEvent()) {
-			if (event->is<sf::Event::Closed>()) {
-				window.close();
-			} else if (const auto keyPressed = event->getIf<sf::Event::KeyPressed>()) {
-				if (keyPressed->scancode == sf::Keyboard::Scancode::Escape) {
-					window.close();
-				}
-			}
-		}
+  while (window.isOpen()) {
+    while (auto event = window.pollEvent()) {
+      if (event->is<sf::Event::Closed>()) {
+        window.close();
+      } else if (const auto keyPressed = event->getIf<sf::Event::KeyPressed>()) {
+        if (keyPressed->scancode == sf::Keyboard::Scancode::Escape) {
+          window.close();
+        }
+      }
+    }
 
-		auto dt = frameClock.restart();
-		game.update(dt.asSeconds());
+    auto dt = frameClock.restart();
+    game.update(dt.asSeconds());
 
-		window.clear(sf::Color::White);
-		game.draw(window);
-		window.display();
-	}
+    window.clear(sf::Color::White);
+    game.draw(window);
+    window.display();
+  }
 
-	return 0;
+  return 0;
 }

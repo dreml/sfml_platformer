@@ -6,13 +6,13 @@ namespace sfmlp {
 
 class Component {
 public:
-  Component(GameObject &owner);
+  Component(GameObject& owner);
 
   virtual void update(float dt) = 0;
-  virtual void draw(sf::RenderTarget &rt) const = 0;
+  virtual void draw(sf::RenderTarget& rt) const = 0;
 
 protected:
-  GameObject &owner;
+  GameObject& owner;
 };
 
 } // namespace sfmlp

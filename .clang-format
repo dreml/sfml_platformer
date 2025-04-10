@@ -1,0 +1,36 @@
+BasedOnStyle: Google
+IndentWidth: 2
+UseTab: Never
+
+AllowShortIfStatementsOnASingleLine: OnlyFirstIf
+AllowShortLoopsOnASingleLine: false
+
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
+ConstructorInitializerIndentWidth: 2
+
+ColumnLimit: 0
+DerivePointerAlignment: false
+AlignAfterOpenBracket: BlockIndent
+ContinuationIndentWidth: 2
+AlignConsecutiveDeclarations: None
+IndentAccessModifiers: false
+AccessModifierOffset: -2
+
+AllowAllArgumentsOnNextLine: true
+SpacesBeforeTrailingComments: 1
+
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterClass: false
+  AfterControlStatement: Never
+  AfterEnum: false
+  AfterFunction: true
+  AfterNamespace: false
+  AfterStruct: false
+  AfterUnion: false
+  BeforeCatch: false
+  BeforeElse: false
+  IndentBraces: false
+  SplitEmptyFunction: false
+  SplitEmptyRecord: false
+  SplitEmptyNamespace: false

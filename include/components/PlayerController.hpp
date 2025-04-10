@@ -6,10 +6,10 @@ namespace sfmlp {
 
 class PlayerController : public Component {
 public:
-  PlayerController(GameObject &owner, float speed);
+  PlayerController(GameObject& owner, float speed);
 
   virtual void update(float dt) override;
-  virtual void draw(sf::RenderTarget &rt) const override;
+  virtual void draw(sf::RenderTarget& rt) const override;
 
 private:
   float speed;
