@@ -4,4 +4,5 @@
 
 using namespace sfmlp;
 
-Component::Component(GameObject& owner) : owner(owner) {};
+Component::Component(GameObject& owner)
+  : owner(owner) {};

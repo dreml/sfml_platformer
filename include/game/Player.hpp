@@ -12,7 +12,7 @@ namespace sfmlp {
 
 class Player : public GameObject {
 public:
-  Player(sf::Vector2f p, std::string texturePath);
+  Player(sf::Vector2f p, std::string texturePath, float speed);
 
   virtual void update(float dt) override;
   virtual void draw(sf::RenderTarget& rt) const override;

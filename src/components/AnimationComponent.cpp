@@ -1,5 +1,7 @@
 #include "components/AnimationComponent.hpp"
 
+#include <SFML/Graphics/Color.hpp>
+#include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/System/Vector2.hpp>
 #include <string>
 
@@ -23,10 +25,12 @@ AnimationComponent::AnimationComponent(GameObject& owner, std::string texturePat
 
 void AnimationComponent::update(float dt)
 {
+  sprite.setPosition(owner.getPosition());
+  sprite.setRotation(owner.getRotation());
+  sprite.setScale(owner.getScale());
 }
 
 void AnimationComponent::draw(sf::RenderTarget& rt) const
 {
-  auto combinedTranform = owner.getTransform() * sprite.getTransform();
-  rt.draw(sprite, combinedTranform);
+  rt.draw(sprite);
 }

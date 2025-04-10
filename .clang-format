@@ -2,8 +2,9 @@ BasedOnStyle: Google
 IndentWidth: 2
 UseTab: Never
 
-AllowShortIfStatementsOnASingleLine: OnlyFirstIf
+AllowShortIfStatementsOnASingleLine: AllIfsAndElse
 AllowShortLoopsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: Inline
 
 ConstructorInitializerAllOnOneLineOrOnePerLine: true
 ConstructorInitializerIndentWidth: 2
@@ -15,9 +16,13 @@ ContinuationIndentWidth: 2
 AlignConsecutiveDeclarations: None
 IndentAccessModifiers: false
 AccessModifierOffset: -2
+NamespaceIndentation: Inner
 
 AllowAllArgumentsOnNextLine: true
 SpacesBeforeTrailingComments: 1
+
+PackConstructorInitializers: Never
+BreakConstructorInitializers: BeforeColon
 
 BreakBeforeBraces: Custom
 BraceWrapping:

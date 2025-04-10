@@ -6,15 +6,21 @@
 #include <SFML/Window/Keyboard.hpp>
 #include <SFML/Window/VideoMode.hpp>
 
-#include "common/Constants.hpp"
+#include "common/Config.hpp"
 #include "common/Types.hpp"
 #include "game/Game.hpp"
 
 int main()
 {
-  auto screenDimensions = sfmlp::ScreenDimensions{sfmlp::Constants::WINDOW_WIDTH, sfmlp::Constants::WINDOW_HEIGHT};
+  auto screenDimensions = sfmlp::ScreenDimensions{
+    sfmlp::Config::WINDOW_WIDTH,
+    sfmlp::Config::WINDOW_HEIGHT
+  };
 
-  auto window = sf::RenderWindow(sf::VideoMode({sfmlp::Constants::WINDOW_WIDTH, sfmlp::Constants::WINDOW_HEIGHT}), "SFML Test");
+  auto window = sf::RenderWindow(
+    sf::VideoMode({sfmlp::Config::WINDOW_WIDTH, sfmlp::Config::WINDOW_HEIGHT}),
+    "SFML Test"
+  );
   window.setFramerateLimit(144);
 
   sf::Clock frameClock;

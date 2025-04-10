@@ -1,12 +1,9 @@
 #include "game/Game.hpp"
 
-#include <SFML/Graphics/CircleShape.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
-#include <SFML/Graphics/Sprite.hpp>
-#include <SFML/Graphics/Texture.hpp>
 #include <SFML/System/Vector2.hpp>
-#include <memory>
 
+#include "common/Config.hpp"
 #include "common/Types.hpp"
 #include "game/Player.hpp"
 
@@ -17,7 +14,8 @@ Game::Game(ScreenDimensions sd)
 {
   player = std::make_unique<Player>(
     sf::Vector2f{(float)sd.width / 2, (float)sd.height / 2},
-    "assets/player.png"
+    sfmlp::Config::Player::TEXTURE_PATH,
+    sfmlp::Config::Player::SPEED
   );
 }
 
