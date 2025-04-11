@@ -1,6 +1,7 @@
 #include "components/PlayerController.hpp"
 
 #include <SFML/Window/Keyboard.hpp>
+#include <cstdlib>
 
 #include "components/Component.hpp"
 #include "game/GameObject.hpp"
@@ -14,11 +15,20 @@ PlayerController::PlayerController(GameObject& owner, float speed)
 
 void PlayerController::update(float dt)
 {
+  auto scale = owner.getScale();
+  int direction = 0;
+
   if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left)) {
-    owner.move({-speed * dt, 0.f});
+    direction = -1;
   }
   if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right)) {
-    owner.move({speed * dt, 0.f});
+    direction = 1;
+  }
+
+  bIsMoving = direction != 0;
+  if (bIsMoving) {
+    owner.move({direction * speed * dt, 0.f});
+    owner.setScale({direction * std::abs(scale.x), scale.y});
   }
 }
 

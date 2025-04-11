@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/System/Vector2.hpp>
+#include <memory>
 #include <string>
 
 #include "GameObject.hpp"
@@ -18,8 +19,8 @@ public:
   virtual void draw(sf::RenderTarget& rt) const override;
 
 private:
-  AnimationComponent animComponent;
-  PlayerController controller;
+  std::unique_ptr<AnimationComponent> animComponent;
+  std::unique_ptr<PlayerController> controller;
 };
 
 } // namespace sfmlp
