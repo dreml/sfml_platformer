@@ -7,6 +7,7 @@
 
 #include "GameObject.hpp"
 #include "components/AnimationComponent.hpp"
+#include "components/PhysicsComponent.hpp"
 #include "components/PlayerController.hpp"
 
 namespace sfmlp {
@@ -21,6 +22,7 @@ public:
 private:
   std::unique_ptr<AnimationComponent> animComponent;
   std::unique_ptr<PlayerController> controller;
+  std::unique_ptr<PhysicsComponent> physicsComponent;
 };
 
 } // namespace sfmlp

@@ -4,6 +4,7 @@
 #include <cstdlib>
 
 #include "components/Component.hpp"
+#include "components/PhysicsComponent.hpp"
 #include "game/GameObject.hpp"
 
 using namespace sfmlp;
@@ -23,6 +24,11 @@ void PlayerController::update(float dt)
   }
   if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right)) {
     direction = 1;
+  }
+  if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up)) {
+    if (auto physicsComponent = owner.getComponent<PhysicsComponent>()) {
+      physicsComponent->jump();
+    }
   }
 
   bIsMoving = direction != 0;

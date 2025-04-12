@@ -26,9 +26,11 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 set(SOURCES
     src/main.cpp
 		src/game/Game.cpp
+		src/game/GameObject.cpp
 		src/game/Player.cpp
 		src/components/AnimationComponent.cpp
 		src/components/Component.cpp
+		src/components/PhysicsComponent.cpp
 		src/components/PlayerController.cpp
 )
 

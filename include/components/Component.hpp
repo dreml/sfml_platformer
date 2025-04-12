@@ -4,6 +4,8 @@
 
 namespace sfmlp {
 
+class GameObject;
+
 class Component {
 public:
   Component(GameObject& owner);

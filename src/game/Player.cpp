@@ -1,15 +1,14 @@
 #include "game/Player.hpp"
 
-#include <SFML/Graphics/CircleShape.hpp>
-#include <SFML/Graphics/Sprite.hpp>
-#include <SFML/Graphics/Texture.hpp>
 #include <SFML/System/Vector2.hpp>
 #include <memory>
 #include <string>
 
 #include "common/Config.hpp"
 #include "components/AnimationComponent.hpp"
+#include "components/PhysicsComponent.hpp"
 #include "components/PlayerController.hpp"
+#include "game/GameObject.hpp"
 
 using namespace sfmlp;
 
@@ -31,12 +30,16 @@ Player::Player(sf::Vector2f p, std::string texturePath, float speed)
     }
   );
   controller = std::make_unique<PlayerController>(*this, speed);
+  physicsComponent = std::make_unique<PhysicsComponent>(*this, sfmlp::Config::GRAVITY, sfmlp::Config::Player::JUMP_FORCE);
+
+  addComponent(animComponent.get());
+  addComponent(controller.get());
+  addComponent(physicsComponent.get());
 };
 
 void Player::update(float dt)
 {
-  animComponent->update(dt);
-  controller->update(dt);
+  GameObject::update(dt);
 
   if (controller->isMoving()) {
     animComponent->playAnimation(AnimationComponent::Animation::Run);
@@ -47,5 +50,5 @@ void Player::update(float dt)
 
 void Player::draw(sf::RenderTarget& rt) const
 {
-  animComponent->draw(rt);
+  GameObject::draw(rt);
 }
