@@ -1,5 +1,8 @@
 #include "game/Player.hpp"
 
+#include <SFML/Graphics/Color.hpp>
+#include <SFML/Graphics/Rect.hpp>
+#include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/System/Vector2.hpp>
 #include <memory>
 #include <string>
@@ -51,4 +54,14 @@ void Player::update(float dt)
 void Player::draw(sf::RenderTarget& rt) const
 {
   GameObject::draw(rt);
+
+  auto r = sf::RectangleShape((sf::Vector2f)animComponent->getSpriteSize());
+  r.setPosition(getPosition());
+  r.setFillColor(sf::Color{255, 0, 0, 120});
+  rt.draw(r);
+}
+
+sf::FloatRect Player::getAABB() const
+{
+  return {getPosition(), (sf::Vector2f)animComponent->getSpriteSize()};
 }

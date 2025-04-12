@@ -29,7 +29,7 @@ int main()
 
   // ground
   auto r = sf::RectangleShape({1920, 1080});
-  r.setPosition({0.f, 834.f});
+  r.setPosition({0.f, 800.f});
   r.setFillColor(sf::Color::Green);
 
   while (window.isOpen()) {

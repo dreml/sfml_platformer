@@ -19,6 +19,8 @@ public:
   virtual void update(float dt) override;
   virtual void draw(sf::RenderTarget& rt) const override;
 
+  sf::FloatRect getAABB() const override;
+
 private:
   std::unique_ptr<AnimationComponent> animComponent;
   std::unique_ptr<PlayerController> controller;

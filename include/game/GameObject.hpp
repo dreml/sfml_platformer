@@ -13,6 +13,8 @@ public:
   virtual void update(float dt);
   virtual void draw(sf::RenderTarget& rt) const;
 
+  virtual sf::FloatRect getAABB() const = 0;
+
   template <typename T>
   T* getComponent()
   {

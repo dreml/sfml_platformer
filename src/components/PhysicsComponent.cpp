@@ -16,7 +16,7 @@ void PhysicsComponent::update(float dt)
 {
   applyGravity(dt);
 
-  if (owner.getPosition().y >= 800.f) {
+  if (owner.getPosition().y + owner.getAABB().size.y >= 800.f) {
     bIsOnGround = true;
     if (verticalVelocity >= 0.f) {
       verticalVelocity = 0.f;

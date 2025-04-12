@@ -27,6 +27,8 @@ public:
 
   void playAnimation(Animation animation);
 
+  sf::Vector2i getSpriteSize() const { return spriteSize; }
+
 private:
   sf::Texture texture;
   sf::Sprite sprite;

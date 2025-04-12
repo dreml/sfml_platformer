@@ -12,8 +12,12 @@ using namespace sfmlp;
 Game::Game(ScreenDimensions sd)
   : screenDimensions(sd)
 {
+  sf::Vector2f playerPosition = {
+    (float)(sd.width - sfmlp::Config::Player::SPRITE_SIZE.x) / 2,
+    (float)(sd.height - sfmlp::Config::Player::SPRITE_SIZE.y) / 2
+  };
   player = std::make_unique<Player>(
-    sf::Vector2f{(float)sd.width / 2, (float)sd.height / 2},
+    sf::Vector2f{playerPosition},
     sfmlp::Config::Player::TEXTURE_PATH,
     sfmlp::Config::Player::SPEED
   );

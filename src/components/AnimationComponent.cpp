@@ -22,14 +22,14 @@ AnimationComponent::AnimationComponent(GameObject& owner, std::string texturePat
   }
 
   sprite.setOrigin(spriteOrigin);
-  sprite.setPosition(owner.getPosition());
+  sprite.setPosition(owner.getPosition() + (sf::Vector2f)spriteSize / 2.f);
   sprite.setTextureRect(frameRec);
   currentAnimation = Animation::Idle;
 }
 
 void AnimationComponent::update(float dt)
 {
-  sprite.setPosition(owner.getPosition());
+  sprite.setPosition(owner.getPosition() + (sf::Vector2f)spriteSize / 2.f);
   sprite.setRotation(owner.getRotation());
   sprite.setScale(owner.getScale());
 
