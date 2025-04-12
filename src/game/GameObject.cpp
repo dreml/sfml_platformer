@@ -2,6 +2,8 @@
 
 #include <SFML/Graphics/RenderTarget.hpp>
 
+#include "components/Component.hpp"
+
 using namespace sfmlp;
 
 void GameObject::update(float dt)

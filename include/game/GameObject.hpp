@@ -4,8 +4,6 @@
 #include <SFML/Graphics/Transformable.hpp>
 #include <vector>
 
-#include "components/Component.hpp"
-
 namespace sfmlp {
 
 class Component;

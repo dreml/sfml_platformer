@@ -1,6 +1,6 @@
 #pragma once
 
-#include "game/GameObject.hpp"
+#include <SFML/Graphics/RenderTarget.hpp>
 
 namespace sfmlp {
 
