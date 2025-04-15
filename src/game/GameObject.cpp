@@ -3,8 +3,13 @@
 #include <SFML/Graphics/RenderTarget.hpp>
 
 #include "components/Component.hpp"
+#include "game/World.hpp"
 
 using namespace sfmlp;
+
+GameObject::GameObject(World* world)
+  : world(world)
+{}
 
 void GameObject::update(float dt)
 {

@@ -12,10 +12,12 @@
 #include "components/PhysicsComponent.hpp"
 #include "components/PlayerController.hpp"
 #include "game/GameObject.hpp"
+#include "game/World.hpp"
 
 using namespace sfmlp;
 
-Player::Player(sf::Vector2f p, std::string texturePath, float speed)
+Player::Player(World* world, sf::Vector2f p, std::string texturePath, float speed)
+  : GameObject(world)
 {
   setOrigin({(float)sfmlp::Config::Player::SPRITE_SIZE.x / 2, (float)sfmlp::Config::Player::SPRITE_SIZE.y / 2});
   setPosition(p);

@@ -6,6 +6,7 @@
 #include "components/Component.hpp"
 #include "components/PhysicsComponent.hpp"
 #include "game/GameObject.hpp"
+#include "game/World.hpp"
 
 using namespace sfmlp;
 
@@ -33,8 +34,19 @@ void PlayerController::update(float dt)
 
   bIsMoving = direction != 0;
   if (bIsMoving) {
-    owner.move({direction * speed * dt, 0.f});
     owner.setScale({direction * std::abs(scale.x), scale.y});
+
+    auto worldBoundaries = owner.getWorld()->getWorldBoundaries();
+
+    auto playerAABB = owner.getAABB();
+    auto newPositionX = playerAABB.position.x + direction * speed * dt;
+    if (newPositionX <= 0.f) {
+      owner.setPosition({0.f, playerAABB.position.y});
+    } else if (newPositionX + owner.getAABB().size.x >= worldBoundaries.width) {
+      owner.setPosition({(float)worldBoundaries.width - playerAABB.size.x, playerAABB.position.y});
+    } else {
+      owner.setPosition({newPositionX, playerAABB.position.y});
+    }
   }
 }
 

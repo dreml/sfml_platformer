@@ -5,7 +5,6 @@
 
 #include "common/Config.hpp"
 #include "common/Types.hpp"
-#include "game/Player.hpp"
 
 using namespace sfmlp;
 
@@ -16,19 +15,15 @@ Game::Game(ScreenDimensions sd)
     (float)(sd.width - sfmlp::Config::Player::SPRITE_SIZE.x) / 2,
     (float)(sd.height - sfmlp::Config::Player::SPRITE_SIZE.y) / 2
   };
-  player = std::make_unique<Player>(
-    sf::Vector2f{playerPosition},
-    sfmlp::Config::Player::TEXTURE_PATH,
-    sfmlp::Config::Player::SPEED
-  );
+  world = std::make_unique<World>(sd, playerPosition);
 }
 
 void Game::update(float dt)
 {
-  player->update(dt);
+  world->update(dt);
 }
 
 void Game::draw(sf::RenderTarget& rt) const
 {
-  player->draw(rt);
+  world->draw(rt);
 }

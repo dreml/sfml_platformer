@@ -3,6 +3,7 @@
 #include <SFML/Window/Keyboard.hpp>
 
 #include "game/GameObject.hpp"
+#include "game/World.hpp"
 
 using namespace sfmlp;
 
@@ -16,10 +17,28 @@ void PhysicsComponent::update(float dt)
 {
   applyGravity(dt);
 
-  if (owner.getPosition().y + owner.getAABB().size.y >= 800.f) {
-    bIsOnGround = true;
-    if (verticalVelocity >= 0.f) {
+  bIsOnGround = false;
+  auto ownerAABB = owner.getAABB();
+
+  for (const auto& platform : owner.getWorld()->getPlatforms()) {
+    auto platformAABB = platform->getAABB();
+
+    auto intersection = platform->getAABB().findIntersection(ownerAABB);
+    if (!intersection) {
+      continue;
+    }
+
+    float playerBottom = ownerAABB.position.y + ownerAABB.size.y;
+    float platformTop = platformAABB.position.y;
+
+    float overlapX = std::min(ownerAABB.position.x + ownerAABB.size.x, platformAABB.position.x + platformAABB.size.x) -
+                     std::max(ownerAABB.position.x, platformAABB.position.x);
+
+    if (playerBottom <= platformTop + 10.f && verticalVelocity >= 0.f && overlapX > 20.f) {
+      owner.setPosition({ownerAABB.position.x, platformTop - ownerAABB.size.y});
       verticalVelocity = 0.f;
+      bIsOnGround = true;
+      break;
     }
   }
 

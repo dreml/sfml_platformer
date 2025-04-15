@@ -27,7 +27,9 @@ set(SOURCES
     src/main.cpp
 		src/game/Game.cpp
 		src/game/GameObject.cpp
+		src/game/Platform.cpp
 		src/game/Player.cpp
+		src/game/World.cpp
 		src/components/AnimationComponent.cpp
 		src/components/Component.cpp
 		src/components/PhysicsComponent.cpp

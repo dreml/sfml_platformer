@@ -4,7 +4,7 @@
 #include <memory>
 
 #include "common/Types.hpp"
-#include "game/Player.hpp"
+#include "game/World.hpp"
 
 namespace sfmlp {
 
@@ -18,7 +18,7 @@ public:
 
 private:
   ScreenDimensions screenDimensions;
-  std::unique_ptr<Player> player;
+  std::unique_ptr<World> world;
 };
 
 } // namespace sfmlp
